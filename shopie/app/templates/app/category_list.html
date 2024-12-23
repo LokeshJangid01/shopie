@@ -1,0 +1,23 @@
+{% extends "app/base.html" %}
+{% block title %}Category List{% endblock %}
+{% block content %}
+    <h2>Categories</h2>
+    <div class="container">
+        <ul class="list-group">
+            {% for category in categories %}
+                <li class="list-group-item">
+                    {{ category.name }} 
+                    
+                        <a href="{% url 'category_update' category.id %}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Edit</a>
+                                        
+                        <a href="{% url 'category_delete' category.id %}" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Delete</a>                                                           
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <button type="button" class="btn btn-warning">
+        <a href="{% url 'category_create' %}">Add New Category</a>
+    </button>
+    
+{% endblock %}
+

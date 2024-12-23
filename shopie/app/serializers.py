@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Category, Customer, Product, Order, OrderItem
 
+
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category

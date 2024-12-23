@@ -1,0 +1,38 @@
+{% extends "app/base.html" %}
+{% block title %}Order  List{% endblock %}
+{% block content %}
+    <h2>Orders</h2>
+    <div class="container">
+        
+        <table class="table">
+            <thead>
+                <tr>
+                  
+                  <th scope="col">Order No.</th>
+                  <th scope="col">Ordered by </th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in orders %}
+                <tr>                  
+                  <td>{{ order.id }}</td>
+                  <td>{{ order.customer.first_name }} {{ order.customer.last_name }}</td>
+                  <td>{{ order.status }}</td>                  
+                  <td><a href="{% url 'order_update' order.id %}" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Edit</a></td>                                        
+                  <td><a href="{% url 'order_delete' order.id %}" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Delete</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+
+        </table>
+        <button type="button" class="btn btn-warning">
+            <a href="{% url 'order_create' %}">Add New Order</a>
+        </button>
+    </div>
+    
+    
+{% endblock %}
+
